@@ -1,0 +1,27 @@
+<link rel = "stylesheet" href = "http://www.botsume.com/css/bootstrap.min.css">
+<div class = "container" style = "width: 200px; height: 200px; position: fixed;">
+<div class = "container msgarea" id = "msgarea" style = "padding-top: 60px;">
+</div>
+<div class = "navbar navbar-default navbar-fixed-bottom" style = "padding-top: 10px; padding-bottom: 10px;">
+<div class = "container-fluid">
+<input type = "text" name = "msginput" class = "msginput form-control" id = "msginput" placeholder="Enter your message here ... (Press enter to send message)" onkeydown="if (event.keyCode == 13) sendmsg()">
+</div>
+</div>
+<script>
+function sendmsg(){
+var message = msginput.value;
+if (message != ""){
+var xmlhttp = new XMLHttpRequest();
+msgarea.innerHTML += '<div class = "media"> <div class = "media-left"> <img class = "media-object" style = "width: 32px; height: 32px;" src = "http://www.botimg/icon.png"> </div> <div class = "media-body"> <p> '+message+'</p> </div> </div> <hr>';
+msginput.value = "";
+xmlhttp.open("GET","send.php?id=91430bac-9000-11e6-b750-c95758b58475&message="+message,false);
+xmlhttp.send();
+var response = xmlhttp.responseText.split("#");
+for (i = 0; i < response.length; i++){
+msgarea.innerHTML += '<div class = "media"> <div class = "media-body"> <p>'+response[i]+'</p> </div> <div class = "media-right"> < img class = "media-object" style = "width: 32px; height: 32px;" src = "http://www.botsume.com/img/icon.png"> </div> </div> <hr>';
+}
+window.scrollTo(0,document.body.scrollHeight);
+}
+}
+</script> 
+</div>

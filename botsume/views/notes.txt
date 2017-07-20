@@ -1,0 +1,25 @@
+ORDER BY
+(
+CASE 
+WHEN  col LIKE '%red%' THEN 1
+ELSE 0
+END CASE
++     
+CASE 
+WHEN  col LIKE '%green%' THEN 1
+ELSE 0 
+END CASE
++    
+CASE 
+WHEN  col LIKE '%blue%' THEN 1
+ELSE 0
+END CASE
+)  DESC
+
+
+Select yourcol,
+  length(yourCol) - length(replace(yourcol, ' ', '')) + 1 NumbofWords
+from yourtable
+
+
+UD@QNPF8kbL*
